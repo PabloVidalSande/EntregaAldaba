@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<div class="text-center">
+
+    <html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#form').submit(function (e) {
+                    e.preventDefault();
+                    var municipio = $('#municipio').val();
+                    $.get('http://localhost:5000/api/values?municipio=' + municipio, function (data) {
+                        // $('#respuesta').html(JSON.stringify(data, null, 2));
+                        for (var i = 0; i < 3; i++){
+                        $('#dia' + (i+1)).html(data[i]["fechaString"]);
+                        $('#cieloMañana' + (i+1)).html(data[i]["ceo_manha"]);
+                        $('#cieloTarde'+ (i+1)).html(data[i]["ceo_tarde"]);
+                        $('#cieloNoche'+ (i+1)).html(data[i]["ceo_noite"]);
+
+                        $('#lluviaMañana' + (i+1)).html(data[i]["lluvia_manha"]);
+                        $('#lluviaTarde'+ (i+1)).html(data[i]["lluvia_tarde"]);
+                        $('#lluviaNoche'+ (i+1)).html(data[i]["lluvia_noite"]);
+
+                        $('#situacionMañana' + (i+1)).html(data[i]["situacion_manha"]);
+                        $('#situacionTarde'+ (i+1)).html(data[i]["situacion_tarde"]);
+                        $('#situacionNoche'+ (i+1)).html(data[i]["situacion_noite"]);
+
+                        $('#TempMax'+ (i+1)).html(data[i]["tMax"] + "ºC");
+                        $('#TempMin'+ (i+1)).html(data[i]["tMin"] + "ºC");
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Prediccion Metereologica</h1>
+        <form id="form">
+            <label for="municipio">Introduce el municipio:</label>
+            <input type="text" id="municipio" name="municipio">
+            <button type="submit">Enviar</button>
+        </form>
+        <!-- <div id="respuesta"></div> -->
+        <table id="respuesta">
+            <thead>
+                <div>
+                    <tr>
+                        <th>Día 1:</th>
+                        <th id="dia1"></th>
+                    </tr>
+                    <tr>
+                        <th>Cielo (mañana):</th>
+                        <th id="cieloMañana1"></th>
+                        <th id="situacionMañana1"></th>
+                    </tr>
+                    <tr>
+                        <th>Cielo (tarde):</th>
+                        <th id="cieloTarde1"></th>
+                        <th id="situacionTarde1"></th>
+                    </tr>
+                    <tr>
+                        <th>Cielo (noche):</th>
+                        <th id="cieloNoche1"></th>
+                        <th id="situacionNoche1"></th>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje de lluvia (mañana):</th>
+                        <th id="lluviaMañana1"></th>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje de lluvia (tarde):</th>
+                        <th id="lluviaTarde1"></th>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje de lluvia (noche):</th>
+                        <th id="lluviaNoche1"></th>
+                    </tr>
+                    <tr>
+                        <th>Temperatura máxima:</th>
+                        <th id="TempMax1"></th>
+                    </tr>
+                    <tr>
+                        <th>Temperatura mínima:</th>
+                        <th id="TempMin1"></th>
+                    </tr>
+                </div>
+                <div>
+                    <tr></tr>
+                </div>
+
+                <div>
+                    <tr>
+                        <th>Día 2</th>
+                        <th id="dia2"></th>
+                    </tr>
+                    <tr>
+                        <th>Cielo (mañana):</th>
+                        <th id="cieloMañana2"></th>
+                        <th id="situacionMañana2"></th>
+                    </tr>
+                    <tr>
+                        <th>Cielo (tarde):</th>
+                        <th id="cieloTarde2"></th>
+                        <th id="situacionTarde2"></th>
+                    </tr>
+                    <tr>
+                        <th>Cielo (noche):</th>
+                        <th id="cieloNoche2"></th>
+                        <th id="situacionNoche2"></th>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje de lluvia (mañana):</th>
+                        <th id="lluviaMañana2"></th>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje de lluvia (tarde):</th>
+                        <th id="lluviaTarde2"></th>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje de lluvia (noche):</th>
+                        <th id="lluviaNoche2"></th>
+                    </tr>
+                    <tr>
+                        <th>Temperatura máxima:</th>
+                        <th id="TempMax2"></th>
+                    </tr>
+                    <tr>
+                        <th>Temperatura mínima:</th>
+                        <th id="TempMin2"></th>
+                    </tr>
+                </div>
+                <div>
+                    <tr></tr>
+                </div>
+                <div>
+                    <tr>
+                        <th>Día 3</th>
+                        <th id="dia3"></th>
+                    </tr>
+                    <tr>
+                        <th>Cielo (mañana):</th>
+                        <th id="cieloMañana3"></th>
+                        <th id="situacionMañana3"></th>
+                    </tr>
+                    <tr>
+                        <th>Cielo (tarde):</th>
+                        <th id="cieloTarde3"></th>
+                        <th id="situacionTarde3"></th>
+                    </tr>
+                    <tr>
+                        <th>Cielo (noche):</th>
+                        <th id="cieloNoche3"></th>
+                        <th id="situacionNoche3"></th>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje de lluvia (mañana):</th>
+                        <th id="lluviaMañana3"></th>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje de lluvia (tarde):</th>
+                        <th id="lluviaTarde3"></th>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje de lluvia (noche):</th>
+                        <th id="lluviaNoche3"></th>
+                    </tr>
+                    <tr>
+                        <th>Temperatura máxima:</th>
+                        <th id="TempMax3"></th>
+                    </tr>
+                    <tr>
+                        <th>Temperatura mínima:</th>
+                        <th id="TempMin3"></th>
+                    </tr>
+                </div>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+    </body>
+
+    </html>
+
+</div>
